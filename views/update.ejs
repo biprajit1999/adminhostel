@@ -106,7 +106,7 @@
 function updateForm() {
     $('#updateDetails').prop('disabled', true);
     $.ajax({
-        url: '/survey_form/update',
+        url: '/form/update',
         type: 'PUT',
         data: $('#surveyForm').serialize(),
         success: function(response) {
@@ -132,7 +132,7 @@ function retrieveRecord() {
     var aadhar = prompt("Please enter the Aadhar Card Number to retrieve the record:");
     if (aadhar !== null) {
         $.ajax({
-            url: '/survey_form/retrieve',
+            url: '/form/retrieve',
             type: 'GET',
             data: { aadhar: aadhar },
             success: function(response) {

@@ -47,7 +47,7 @@ let index = require('./routes/index');
 app.use('/', index);
 
 
-app.post('/survey_form', function(req, res) {
+app.post('/form', function(req, res) {
   let name = req.body.name;
   let phone = req.body.phone;
   let aadhar = req.body.aadhar;
@@ -159,7 +159,7 @@ app.post('/check_room_availability', function(req, res) {
 
 
 
-app.delete('/survey_form/delete/:aadhar', function(req, res) {
+app.delete('/form/delete/:aadhar', function(req, res) {
   let aadhar = req.params.aadhar;
 
   db.collection('detail').deleteOne({ aadhar: aadhar }, function(err, result) {
@@ -182,7 +182,7 @@ app.delete('/survey_form/delete/:aadhar', function(req, res) {
 const Detail = require('./models/detail');
 
 
-app.put("/survey_form/update", (req, res) => {
+app.put("/form/update", (req, res) => {
   let query = { aadhar: req.body.aadhar };
   Detail.findOneAndUpdate(query, req.body, { new: true })
     .then(() => {
@@ -194,7 +194,7 @@ app.put("/survey_form/update", (req, res) => {
 });
 
 
-app.get("/survey_form/retrieve", (req, res) => {
+app.get("/form/retrieve", (req, res) => {
   let query = { aadhar: req.query.aadhar };
   Detail.findOne(query)
     .then((data) => {
